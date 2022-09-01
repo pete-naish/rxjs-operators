@@ -1,12 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { of } from "rxjs";
+
+import { myMap } from "./MyObservable";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
+
+of(1, 2, 3, 4, 5)
+  .pipe(myMap((x: number) => x * 2))
+  .subscribe(console.log);
+
 root.render(
   <React.StrictMode>
     <App />
